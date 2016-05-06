@@ -29,6 +29,22 @@ export default Ember.Route.extend({
           this.get('flashMessages').danger(`Problem deleting room: ${room.get('name')}`);
         });
       }
+    },
+    enterRoom(room) {
+      let buttons = ['remove_circle'];
+      let targetText = arguments[1].target.innerText;
+
+      if (buttons.indexOf(targetText) < 0) {
+        this.transitionTo('app.room.index', room);
+      }
+    }
+  },
+  enterRoom(room) {
+    let buttons = ['remove_circle'];
+    let targetText = arguments[1].target.innerText;
+
+    if (buttons.indexOf(targetText) < 0) {
+      this.transitionTo('app.room.index', room);
     }
   },
   model() {
